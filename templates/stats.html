@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block css %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/stats.css') }}">
+{% endblock css %}
+
+{% block main %}
+{{ super() }}
+<div class="container">
+  <div class="row heading">
+    <h1>Coffee Bean Stats</h1>
+  </div>
+  <div class="row visualization">
+    <div id="chart"></div>
+  </div>
+</div>
+{% endblock main %}
+
+
+{% block cdn_js %}
+{{ super() }}
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.3/d3-tip.min.js"></script>
+{% endblock cdn_js %}
+
+{% block js %}
+<script type=text/javascript>
+var logs = {{logs|tojson}}
+</script>
+<script src="{{ url_for('static', filename='js/stats.js') }}"></script>
+{% endblock js %}

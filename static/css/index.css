@@ -1,0 +1,23 @@
+.heading {
+  margin-bottom: 20px;
+}
+
+.heading h1 {
+  font-family: 'Droid Sans', sans-serif;
+  font-weight: bold;
+  font-size: 75px;
+  text-align: center;
+}
+
+.status img{
+  float: right;
+}
+
+.info p{
+  font-family: 'Neucha', cursive;
+  font-size: 40px;
+}
+
+.info{
+  margin-top: 70px;
+}

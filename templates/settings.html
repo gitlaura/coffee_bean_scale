@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block css %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+{% endblock css %}
+
+{% block main %}
+{{ super() }}
+<div class="container">
+  <div class="row heading">
+    <h1>Settings</h1>
+  </div>
+  <div>
+    <h3>Container Type</h3>
+    <form>
+      <div class="radio">
+        <label>
+          <input type="radio" name="containers" id="bags" value="bags" checked>
+          Just coffee bags
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="containers" id="plastic" value="plastic">
+          Plastic container, like tupperware
+        </label>
+      </div>
+      <button type="submit" class="btn btn-default">Save</button>
+    </form>
+  </div>
+  <div>
+    <h3>Notifications</h3>
+    <form>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="email">
+          Email
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="slack">
+          Slack
+        </label>
+      </div>
+      <button type="submit" class="btn btn-default">Save</button>
+    </form>
+  </div>
+  <div>
+    <h3>Emails receiving notifications</h3>
+    <form>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="email">
+          laura.rokita@gmail.com
+        </label>
+      </div>
+      <button type="submit" class="btn btn-default">Remove</button>
+    </form>
+  </div>
+  <div>
+    <h3>Add Emails</h3>
+    <form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="addEmail" placeholder="Enter email" style="width:300px">
+  </div>
+  <button type="submit" class="btn btn-default">Add</button>
+    </form>
+</div>
+{% endblock main %}
+
+
+{% block cdn_js %}
+{{ super() }}
+{% endblock cdn_js %}
+
+{% block js %}
+<script>
+// var log = {{log}}
+</script>
+{% endblock js %}

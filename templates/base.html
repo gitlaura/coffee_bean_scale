@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <title>Datascope Coffee Bean Status</title>
+    {% block cdn_css %}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Neucha' rel='stylesheet' type='text/css'>
+    {% endblock cdn_css %}
+
+    {% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    {% endblock css %}
+  </head>
+
+  {% block body %}
+  <body>
+    <div class="navbar-default navbar-static-top" role="navigation">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{ url_for('index')}}">Status</a></li>
+          <li><a href="{{ url_for('stats')}}">Stats</a></li>
+          <li><a href="{{ url_for('settings')}}">Settings</a></li>
+        </ul>
+        <div class="navbar-inner">
+          <div class="nav-center logo">
+            <a href="#"><img src="{{ url_for('static', filename='img/datascope-logo.png') }}"/></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% block header %}
+    {% endblock header %}
+
+    <div id="main">
+      {% block main %}
+      {% endblock main %}
+    </div>
+
+    {% block footer %}
+    <footer class="footer">
+      <nav class="navbar navbar-default">
+        <div class="container">
+
+          <div class="navbar-header">
+            <a class="navbar-brand" href="http://outlier.uchicago.edu">outlier
+            </a>
+          </div>
+
+          <div class="navbar-header pull-right">
+            <p class="navbar-text">
+              design and analysis by
+            </p>
+            <a class="navbar-brand" href="http://datascopeanalytics.com">datascope
+            </a>
+          </div>
+        </div>
+      </nav>
+    </footer>
+    {% endblock footer %}
+
+    {% block cdn_js %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    {% endblock cdn_js %}
+
+    {% block js %}
+    {% endblock js %}
+
+  </body>
+  {% endblock body %}
+</html>

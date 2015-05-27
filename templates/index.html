@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block css %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock css %}
+
+{% block main %}
+{{ super() }}
+<div class="container">
+  <div class="row heading">
+    <h1>Coffee Bean Status</h1>
+  </div>
+  <div class="row status">
+    <div class="picture col-md-6">
+      {% if log.value == '2000' %}
+      <img src="{{ url_for('static', filename='img/status-low.png') }}" height="400px">
+      {% elif log.value != 500 %}
+      <img src="#" width="200px" height="200px">
+      {% endif %}
+    </div>
+    <div class="description col-md-6">
+      <div class="info">
+        <p>Coffee status was last</p>
+        <p>checked on</p>
+        <p>{{log.month}}/{{log.day}}/{{log.year}} at {{log.hour}}:{{log.minute}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main %}
+
+
+{% block cdn_js %}
+{{ super() }}
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.3/d3-tip.min.js"></script>
+{% endblock cdn_js %}
+
+{% block js %}
+<script>
+var log = {{log}}
+</script>
+{% endblock js %}

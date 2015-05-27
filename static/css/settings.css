@@ -1,0 +1,10 @@
+.heading {
+  margin-bottom: 20px;
+}
+
+.heading h1 {
+  font-family: 'Droid Sans', sans-serif;
+  font-weight: bold;
+  font-size: 75px;
+  text-align: center;
+}
