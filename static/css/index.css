@@ -15,6 +15,12 @@
 
 .info p{
   font-family: 'Neucha', cursive;
+  font-size: 30px;
+}
+
+.info h3{
+  font-family: 'Droid Sans', sans-serif;
+  font-weight: bold;
   font-size: 40px;
 }
 

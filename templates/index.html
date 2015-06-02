@@ -13,17 +13,13 @@
   </div>
   <div class="row status">
     <div class="picture col-md-6">
-      {% if log.value == '2000' %}
-      <img src="{{ url_for('static', filename='img/status-low.png') }}" height="400px">
-      {% elif log.value != 500 %}
-      <img src="#" width="200px" height="200px">
-      {% endif %}
+      <img src="{{ url_for('static', filename=('img/status-'+ log.level + '.png')) }}" height="400px">
     </div>
     <div class="description col-md-6">
       <div class="info">
-        <p>Coffee status was last</p>
-        <p>checked on</p>
-        <p>{{log.month}}/{{log.day}}/{{log.year}} at {{log.hour}}:{{log.minute}}</p>
+        <h3>Current Level: {{log.level.title()}}</h3>
+        <p>Coffee status was last checked on</p>
+        <p>{{log.month}}/{{log.day}}/{{log.year}} at {{log.hour}}:{{log.minute}}{{log.post}}</p>
       </div>
     </div>
   </div>
@@ -39,6 +35,6 @@
 
 {% block js %}
 <script>
-var log = {{log}}
+var log = {{log|tojson}}
 </script>
 {% endblock js %}

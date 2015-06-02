@@ -16,9 +16,15 @@
   shape-rendering: crispEdges;
 }
 
-.area {
-  fill: steelblue;
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 3.0px;
 }
+
+/*.area {
+  fill: steelblue;
+}*/
 
 #chart {
     margin-left: 100px;

@@ -11,18 +11,29 @@
   <div class="row heading">
     <h1>Settings</h1>
   </div>
+  <div class="col-xs-2">
+  </div>
+  <div  class="col-xs-5">
   <div>
     <h3>Container Type</h3>
     <form>
       <div class="radio">
         <label>
-          <input type="radio" name="containers" id="bags" value="bags" checked>
+          {% if settings.container == 'bags' %}
+          <input type="radio" name="container" id="bags" value="bags" checked>
+          {% else %}
+          <input type="radio" name="container" id="bags" value="bags">
+          {% endif %}
           Just coffee bags
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" name="containers" id="plastic" value="plastic">
+          {% if settings.container == 'plastic' %}
+          <input type="radio" name="container" id="plastic" value="plastic" checked>
+          {% else %}
+          <input type="radio" name="container" id="plastic" value="plastic">
+          {% endif %}
           Plastic container, like tupperware
         </label>
       </div>
@@ -31,43 +42,90 @@
   </div>
   <div>
     <h3>Notifications</h3>
-    <form>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" value="email">
-          Email
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" value="slack">
-          Slack
-        </label>
-      </div>
-      <button type="submit" class="btn btn-default">Save</button>
-    </form>
+    <div class="slack">
+      <p>Slack</p>
+      <form>
+        <div class="radio">
+          <label>
+            {% if settings.slack == 'on' %}
+            <input type="radio" name="slack" id="slack" value="on" checked>
+            {% else %}
+            <input type="radio" name="slack" id="slack" value="on">
+            {% endif %}
+            On
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            {% if settings.slack == 'off' %}
+            <input type="radio" name="slack" id="slack" value="off" checked>
+            {% else %}
+            <input type="radio" name="slack" id="slack" value="off">
+            {% endif %}
+            Off
+          </label>
+        </div>
+        <button type="submit" class="btn btn-default">Save</button>
+      </form>
+    </div>
+    <div class="email">
+      <p>Email</p>
+      <form>
+        <div class="radio">
+          <label>
+            {% if settings.email == 'on' %}
+            <input type="radio" name="email" id="email" value="on" checked>
+            {% else %}
+            <input type="radio" name="email" id="email" value="on">
+            {% endif %}
+            On
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            {% if settings.email == 'off' %}
+            <input type="radio" name="email" id="email" value="off" checked>
+            {% else %}
+            <input type="radio" name="email" id="email" value="off">
+            {% endif %}
+            Off
+          </label>
+        </div>
+        <button type="submit" class="btn btn-default">Save</button>
+      </form>
+    </div>
   </div>
-  <div>
+</div>
+  <div class="col-xs-5">
+    <div>
     <h3>Emails receiving notifications</h3>
+    {%if (emails|length < 1) %}
+    <p>No emails added.</p>
+    {% else %}
     <form>
       <div class="checkbox">
         <label>
-          <input type="checkbox" value="email">
-          laura.rokita@gmail.com
+          {% for email in emails %}
+          <input type="checkbox" name ="remove" value={{email}}>
+          {{email}}
+          <br>
+          {% endfor %}
         </label>
       </div>
       <button type="submit" class="btn btn-default">Remove</button>
     </form>
+    {% endif %}
   </div>
   <div>
     <h3>Add Emails</h3>
     <form>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="addEmail" placeholder="Enter email" style="width:300px">
+    <input type="email" class="form-control" name="add" id="addEmail" placeholder="Enter email" style="width:300px">
   </div>
   <button type="submit" class="btn btn-default">Add</button>
     </form>
+</div>
 </div>
 {% endblock main %}
 
@@ -78,6 +136,7 @@
 
 {% block js %}
 <script>
-// var log = {{log}}
+var settings = {{settings|tojson}}
+var emails = {{emails|tojson}}
 </script>
 {% endblock js %}

@@ -8,3 +8,18 @@
   font-size: 75px;
   text-align: center;
 }
+
+.slack{
+  float:left;
+}
+
+.email{
+  margin-left:100px;
+}
+
+.col-xs-5{
+  padding-left: 0px
+}
+.col-xs-2{
+  padding-left: 0px
+}
