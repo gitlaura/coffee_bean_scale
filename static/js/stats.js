@@ -1,7 +1,7 @@
 function render_chart(data){
-var margin = {top: 40, right: 20, bottom: 30, left: 120},
-    width = 960 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+var margin = {top: 40, right: 5, bottom: 30, left: 120},
+    width = 900 - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
 
 var parseDate = d3.time.format("%Y-%m-%d-%H-%M-%S").parse;
 
@@ -12,6 +12,7 @@ var y = d3.scale.linear()
     .range([height, 0]);
 
 var xAxis = d3.svg.axis()
+    .ticks(8)
     .scale(x)
     .orient("bottom");
 
@@ -32,11 +33,11 @@ var line = d3.svg.line()
 
 
 var levels = {
-  'out': {'value':0,'display':'Out of Coffee'},
-  'low': {'value':1,'display':'Not Much Left'},
-  'medium': {'value':2,'display':"Some"},
-  'high': {'value':3,'display':"Plenty"},
-  'full':{'value':4,'display':"Tons of Coffee"}
+  'out': {'value':0,'display':'Out'},
+  'low': {'value':1,'display':'Low'},
+  'medium': {'value':2,'display':'Medium'},
+  'high': {'value':3,'display':'Plenty'},
+  'full':{'value':4,'display':'Full'}
 }
 
 data.forEach(function(d) {

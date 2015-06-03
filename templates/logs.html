@@ -9,16 +9,17 @@
 {{ super() }}
 <div class="container">
   <div class="row heading">
-    <h1>Coffee Bean Status</h1>
+    <h1>All Logs</h1>
   </div>
   <div class="row status">
     <div class="picture col-md-6">
-      <img src="{{ url_for('static', filename=('img/status-'+ log.level + '.png')) }}" height="350px">
+      <img src="{{ url_for('static', filename=('img/status-'+ log.level + '.png')) }}" height="400px">
     </div>
     <div class="description col-md-6">
       <div class="info">
-        <h3>Current Level: <span style="color:green">{{log.level.title()}}</span></h3>
-        <p>Last checked on {{log.month}}/{{log.day}}/{{log.year}} at {{log.hour}}:{{log.minute}}{{log.post}}</p>
+        <h3>Current Level: {{log.level.title()}}</h3>
+        <p>Coffee status was last checked on</p>
+        <p>{{log.month}}/{{log.day}}/{{log.year}} at {{log.hour}}:{{log.minute}}{{log.post}}</p>
       </div>
     </div>
   </div>

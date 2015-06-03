@@ -1,11 +1,12 @@
 .heading {
-  margin-bottom: 20px;
+  margin-top: 25px;
+  margin-bottom: 40px;
 }
 
 .heading h1 {
   font-family: 'Droid Sans', sans-serif;
   font-weight: bold;
-  font-size: 75px;
+  font-size: 60px;
   text-align: center;
 }
 
@@ -15,7 +16,8 @@
 
 .info p{
   font-family: 'Neucha', cursive;
-  font-size: 30px;
+  font-size: 20px;
+  line-height: normal;
 }
 
 .info h3{
@@ -25,5 +27,5 @@
 }
 
 .info{
-  margin-top: 70px;
+  margin-top: 95px;
 }

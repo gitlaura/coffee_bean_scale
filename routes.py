@@ -91,6 +91,10 @@ def update():
     update_data.process_request(value, year, month, day, hour, minute)
     return render_template('update.html')
 
+@app.route('/logs')
+def logs():
+    all_logs = update_data.get_all_logs()
+    return render_template('logs.html', logs=all_logs)
 
 if __name__ == '__main__':
     # enable reloading of the page if any files are changed

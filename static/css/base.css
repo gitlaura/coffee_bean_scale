@@ -8,8 +8,8 @@
 }
 
 .navbar-default{
-  /*border-bottom: 1px solid #E8E8E8;*/
-  background-color: #fff;
+  border-bottom: 1px solid #E8E8E8;
+  /*background-color: lightgray;*/
 }
 
 body {
@@ -19,6 +19,16 @@ body {
 }
 
 .logo img{
-  height: 150px;
-  margin-left: 200px;
+  height: 100px;
+  margin-left: 260px;
+}
+
+.links{
+  margin-top: 25px;
+  margin-right: 50px;
+  font-size: 15px;
+}
+
+.navbar{
+  margin-bottom: 0px;
 }

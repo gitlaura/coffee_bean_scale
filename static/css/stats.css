@@ -27,8 +27,17 @@
 }*/
 
 #chart {
-    margin-left: 100px;
+    margin-left: 7%;
     text {
       font: 14px sans-serif;
     }
+}
+
+.btn-group{
+  margin-left: 38%;
+}
+
+.log-button{
+  float:right;
+  margin-right: 17%;
 }
