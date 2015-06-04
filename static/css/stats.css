@@ -41,3 +41,9 @@
   float:right;
   margin-right: 17%;
 }
+
+.page{
+  overflow:auto;
+  min-height: 85%;
+  padding-bottom:50px;
+}

@@ -29,3 +29,9 @@
 .info{
   margin-top: 95px;
 }
+
+.page{
+  overflow:auto;
+  min-height: 85%;
+  padding-bottom:50px;
+}

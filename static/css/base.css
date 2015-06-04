@@ -32,3 +32,9 @@ body {
 .navbar{
   margin-bottom: 0px;
 }
+
+.footer{
+  position: relative;
+  margin-top: -50px;
+  clear:both;
+}

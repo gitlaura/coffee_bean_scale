@@ -25,10 +25,7 @@
 }
 
 .page{
-  min-height: 100%;
-  padding-bottom:120px;
-}
-
-.footer{
-  margin-top:-150px;
+  overflow:auto;
+  min-height: 85%;
+  padding-bottom:50px;
 }
