@@ -3,11 +3,15 @@ from flask import render_template
 from flask import request
 from flask_mail import Mail
 from flask_mail import Message
+import tablib
+import os
 
 import update_data
 
 app =Flask(__name__)
 mail=Mail(app)
+
+web_root = os.path.dirname(os.path.abspath(__file__))
 
 app.config.update(
 	DEBUG=True,
@@ -93,8 +97,12 @@ def update():
 
 @app.route('/logs')
 def logs():
-    all_logs = update_data.get_all_logs()
-    return render_template('logs.html', logs=all_logs)
+    dataset = tablib.Dataset()
+    with open(os.path.join(web_root, 'data','updates.csv'), 'rb') as csvfile:
+        dataset.csv = csvfile.read()
+        return dataset.html
+    #     all_logs = update_data.get_all_logs()
+    # return render_template('logs.html', logs=all_logs)
 
 if __name__ == '__main__':
     # enable reloading of the page if any files are changed
