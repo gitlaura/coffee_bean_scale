@@ -23,3 +23,12 @@
 .col-xs-2{
   padding-left: 0px
 }
+
+.page{
+  min-height: 100%;
+  padding-bottom:120px;
+}
+
+.footer{
+  margin-top:-150px;
+}
