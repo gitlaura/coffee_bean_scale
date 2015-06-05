@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import redirect, url_for
 from flask import render_template
 from flask import request
 from flask_mail import Mail
@@ -22,8 +23,8 @@ app.config.update(
 	MAIL_USERNAME = 'laura.rokita@gmail.com',
 	MAIL_PASSWORD = 'Laura53087'
 	)
-
 mail=Mail(app)
+
 
 def send_email_alert(coffee_level):
     subject = "Coffee Bean Alert"
@@ -36,6 +37,7 @@ def send_email_alert(coffee_level):
         msg = Message("Coffee Bean Alert",sender='laura.rokita@gmail.com',recipients=[recipient])
         msg.body = text
         mail.send(msg)
+
 
 @app.route('/')
 def index():
@@ -51,9 +53,9 @@ def update_time(log):
         log['hour'] = int(log['hour']) - 12
     return log
 
+
 @app.route('/settings')
 def settings():
-    #update container
     container_type = request.args.get('container')
     email = request.args.get('email')
     slack = request.args.get('slack')
@@ -61,17 +63,22 @@ def settings():
     email_to_add = request.args.get('add')
     if (container_type):
         settings = update_data.update_container(container_type)
+        return redirect(url_for('settings'))
     elif (email):
         settings = update_data.update_email(email)
+        return redirect(url_for('settings'))
     elif (slack):
         settings = update_data.update_slack(slack)
+        return redirect(url_for('settings'))
     else:
         settings = update_data.get_current_settings()
 
     if (email_to_remove):
         emails = update_data.remove_email(email_to_remove)
+        return redirect(url_for('settings'))
     elif (email_to_add):
         emails = update_data.add_email(email_to_add)
+        return redirect(url_for('settings'))
     else:
         emails = update_data.get_emails()
 
@@ -95,14 +102,14 @@ def update():
     update_data.process_request(value, year, month, day, hour, minute)
     return render_template('update.html')
 
+
 @app.route('/logs')
 def logs():
     dataset = tablib.Dataset()
     with open(os.path.join(web_root, 'data','updates.csv'), 'rb') as csvfile:
         dataset.csv = csvfile.read()
         return dataset.html
-    #     all_logs = update_data.get_all_logs()
-    # return render_template('logs.html', logs=all_logs)
+
 
 if __name__ == '__main__':
     # enable reloading of the page if any files are changed

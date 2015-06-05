@@ -22,10 +22,6 @@
   stroke-width: 3.0px;
 }
 
-/*.area {
-  fill: steelblue;
-}*/
-
 #chart {
     margin-left: 7%;
     text {
@@ -46,8 +42,4 @@
   overflow:auto;
   min-height: 85%;
   padding-bottom:50px;
-}
-
-.title{
-  font-family: 'Neucha', cursive;
 }

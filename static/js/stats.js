@@ -1,4 +1,5 @@
 function render_chart(data){
+
 var margin = {top: 40, right: 5, bottom: 30, left: 120},
     width = 900 - margin.left - margin.right,
     height = 350 - margin.top - margin.bottom;
@@ -40,18 +41,15 @@ var levels = {
   'full':{'value':4,'display':'Full'}
 }
 
-data.forEach(function(d) {
-    console.log(d.value);
-  });
-
-
   data.forEach(function(d) {
     d.date = parseDate(d.year+'-'+d.month+'-'+d.day+'-'+d.hour+'-'+d.minute+'-'+0);
-    console.log(d.date);
     d.level_value = +levels[d.level]['value'];
     d.value = +d.value;
-    console.log(d);
   });
+
+  data = data.sort(function(a,b){
+      return b.date - a.date;
+    });
 
   var svg = d3.select("#chart").append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -89,7 +87,6 @@ function update_data(timeDifference){
   data = logs;
   var today = new Date();
   var new_data = [];
-  console.log("Difference: " + timeDifference);
   for (var item in data){
     if(((today - data[item].date)/1000/60/60/24) < timeDifference){
       new_data.push(data[item]);
@@ -99,6 +96,7 @@ function update_data(timeDifference){
 }
 
 // var data = logs;
+d3.selectAll(".line-chart").remove();
 render_chart(logs);
 
 $('#week').on('click', function () {

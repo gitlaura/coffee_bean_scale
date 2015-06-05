@@ -17,7 +17,13 @@
     </div>
     <div class="description col-md-6">
       <div class="info">
+        {%if log.level == 'low' %}
+        <h3>Current Level: <span style="color:#FF8C00">{{log.level.title()}}</span></h3>
+        {% elif log.level == 'out' %}
+        <h3>Current Level: <span style="color:red">{{log.level.title()}}</span></h3>
+        {% else %}
         <h3>Current Level: <span style="color:green">{{log.level.title()}}</span></h3>
+        {% endif %}
         <p>Last checked on {{log.month}}/{{log.day}}/{{log.year}} at {{log.hour}}:{{log.minute}}{{log.post}}</p>
       </div>
     </div>
