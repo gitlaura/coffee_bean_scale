@@ -48,7 +48,7 @@ def emailIsOn():
 
 def get_coffee_level(value):
     value = int(value)
-    bags_values = [1000,3000,7500,13000,70000]
+    bags_values = [2500,5000,7500,10000,70000]
     bags_levels = ['out','low','medium','high','full']
     plastic_values = [1500,3500,8000,13500,70000]
     plastic_levels = ['out','low','medium','high','full']
